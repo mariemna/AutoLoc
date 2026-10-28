@@ -57,6 +57,9 @@ Pour l'exécuter :
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=atelier3
 ```
 
+Le profil utilise automatiquement un port HTTP libre (`server.port=0`) afin
+d'éviter un conflit avec une instance déjà démarrée dans IntelliJ.
+
 La console affiche successivement `save`, `findById` et `deleteById`. Le
 client de démonstration est créé avec une adresse e-mail et un permis uniques,
 puis supprimé à la fin de l'exécution.
