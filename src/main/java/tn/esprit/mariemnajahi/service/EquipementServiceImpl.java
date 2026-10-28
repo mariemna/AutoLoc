@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EquipementService implements IEquipementService {
+public class EquipementServiceImpl implements IEquipementService {
 
     private final IEquipementRepository equipementRepository;
 

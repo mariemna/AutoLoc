@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ContratService implements IContratService {
+public class ContratServiceImpl implements IContratService {
 
     private final IContratRepository contratRepository;
 

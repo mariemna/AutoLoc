@@ -5,6 +5,7 @@ import tn.esprit.mariemnajahi.domain.Client;
 import java.util.List;
 
 public interface IClientService {
+    default Client create(Client client) { return save(client); }
 
     Client save(Client client);
 
@@ -13,6 +14,10 @@ public interface IClientService {
     List<Client> findAll();
 
     Client update(Client client);
+    default Client update(Long id, Client client) {
+        client.setIdClient(id);
+        return update(client);
+    }
 
     void deleteById(Long id);
 

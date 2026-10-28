@@ -5,6 +5,7 @@ import tn.esprit.mariemnajahi.domain.Agence;
 import java.util.List;
 
 public interface IAgenceService {
+    default Agence create(Agence agence) { return save(agence); }
 
     Agence save(Agence agence);
 
@@ -13,6 +14,10 @@ public interface IAgenceService {
     List<Agence> findAll();
 
     Agence update(Agence agence);
+    default Agence update(Long id, Agence agence) {
+        agence.setIdAgence(id);
+        return update(agence);
+    }
 
     void deleteById(Long id);
 

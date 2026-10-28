@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AgenceService implements IAgenceService {
+public class AgenceServiceImpl implements IAgenceService {
 
     private final IAgenceRepository agenceRepository;
 

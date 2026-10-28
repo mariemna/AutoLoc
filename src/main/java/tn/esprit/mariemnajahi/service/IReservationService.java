@@ -5,6 +5,7 @@ import tn.esprit.mariemnajahi.domain.Reservation;
 import java.util.List;
 
 public interface IReservationService {
+    default Reservation create(Reservation reservation) { return save(reservation); }
 
     Reservation save(Reservation reservation);
 
@@ -13,6 +14,10 @@ public interface IReservationService {
     List<Reservation> findAll();
 
     Reservation update(Reservation reservation);
+    default Reservation update(Long id, Reservation reservation) {
+        reservation.setIdReservation(id);
+        return update(reservation);
+    }
 
     void deleteById(Long id);
 

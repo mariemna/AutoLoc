@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class EmployeService implements IEmployeService {
+public class EmployeServiceImpl implements IEmployeService {
 
     private final IEmployeRepository employeRepository;
 

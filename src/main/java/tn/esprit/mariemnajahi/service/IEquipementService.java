@@ -5,6 +5,7 @@ import tn.esprit.mariemnajahi.domain.Equipement;
 import java.util.List;
 
 public interface IEquipementService {
+    default Equipement create(Equipement equipement) { return save(equipement); }
 
     Equipement save(Equipement equipement);
 
@@ -13,6 +14,10 @@ public interface IEquipementService {
     List<Equipement> findAll();
 
     Equipement update(Equipement equipement);
+    default Equipement update(Long id, Equipement equipement) {
+        equipement.setIdEquipement(id);
+        return update(equipement);
+    }
 
     void deleteById(Long id);
 

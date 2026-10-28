@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PaiementService implements IPaiementService {
+public class PaiementServiceImpl implements IPaiementService {
 
     private final IPaiementRepository paiementRepository;
 

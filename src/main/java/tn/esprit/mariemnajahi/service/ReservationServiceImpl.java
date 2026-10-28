@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ReservationService implements IReservationService {
+public class ReservationServiceImpl implements IReservationService {
 
     private final IReservationRepository reservationRepository;
 
