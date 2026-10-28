@@ -12,11 +12,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ContratServiceImpl implements IContratService {
 
+    private static final String RESOURCE_NAME = "Contrat";
+
     private final IContratRepository contratRepository;
 
     @Override
     public Contrat save(Contrat contrat) {
-        ServiceValidation.requireEntity(contrat, "Contrat");
+        ServiceValidation.requireEntity(contrat, RESOURCE_NAME);
         ServiceValidation.requireNewId(contrat.getIdContrat());
         validate(contrat, true);
         return contratRepository.save(contrat);
@@ -24,7 +26,7 @@ public class ContratServiceImpl implements IContratService {
 
     @Override
     public Contrat findById(Long id) {
-        ServiceValidation.requireId(id, "Contrat");
+        ServiceValidation.requireId(id, RESOURCE_NAME);
         return contratRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Contrat not found: " + id));
     }
@@ -36,7 +38,7 @@ public class ContratServiceImpl implements IContratService {
 
     @Override
     public Contrat update(Contrat contrat) {
-        ServiceValidation.requireEntity(contrat, "Contrat");
+        ServiceValidation.requireEntity(contrat, RESOURCE_NAME);
         if (contrat.getIdContrat() == null) {
             throw new IllegalArgumentException("An existing Contrat must have an id");
         }
@@ -50,7 +52,7 @@ public class ContratServiceImpl implements IContratService {
 
     @Override
     public void deleteById(Long id) {
-        ServiceValidation.requireId(id, "Contrat");
+        ServiceValidation.requireId(id, RESOURCE_NAME);
         if (!contratRepository.existsById(id)) {
             throw new ResourceNotFoundException("Contrat not found: " + id);
         }
