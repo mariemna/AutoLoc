@@ -5,6 +5,11 @@ import tn.esprit.mariemnajahi.domain.Vehicule;
 import java.util.List;
 
 public interface IVehiculeService {
+    default Vehicule createVehicule(Vehicule vehicule) { return save(vehicule); }
+    default Vehicule getVehiculeById(Long id) { return findById(id); }
+    default Vehicule updateVehicule(Vehicule vehicule) { return update(vehicule); }
+    default void deleteVehicule(Long id) { deleteById(id); }
+    default List<Vehicule> getAllVehicules() { return findAll(); }
     default Vehicule create(Vehicule vehicule) { return save(vehicule); }
 
     Vehicule save(Vehicule vehicule);
@@ -33,7 +38,4 @@ public interface IVehiculeService {
         return findAll();
     }
 
-    default void deleteVehicule(Long id) {
-        deleteById(id);
-    }
 }

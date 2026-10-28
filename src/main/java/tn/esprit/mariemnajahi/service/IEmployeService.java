@@ -5,6 +5,11 @@ import tn.esprit.mariemnajahi.domain.Employe;
 import java.util.List;
 
 public interface IEmployeService {
+    default Employe createEmploye(Employe employe) { return save(employe); }
+    default Employe getEmployeById(Long id) { return findById(id); }
+    default Employe updateEmploye(Employe employe) { return update(employe); }
+    default void deleteEmploye(Long id) { deleteById(id); }
+    default List<Employe> getAllEmployes() { return findAll(); }
     default Employe create(Employe employe) { return save(employe); }
 
     Employe save(Employe employe);
@@ -33,7 +38,4 @@ public interface IEmployeService {
         return findAll();
     }
 
-    default void deleteEmploye(Long id) {
-        deleteById(id);
-    }
 }

@@ -5,6 +5,11 @@ import tn.esprit.mariemnajahi.domain.Maintenance;
 import java.util.List;
 
 public interface IMaintenanceService {
+    default Maintenance createMaintenance(Maintenance maintenance) { return save(maintenance); }
+    default Maintenance getMaintenanceById(Long id) { return findById(id); }
+    default Maintenance updateMaintenance(Maintenance maintenance) { return update(maintenance); }
+    default void deleteMaintenance(Long id) { deleteById(id); }
+    default List<Maintenance> getAllMaintenances() { return findAll(); }
     default Maintenance create(Maintenance maintenance) { return save(maintenance); }
 
     Maintenance save(Maintenance maintenance);
@@ -33,7 +38,4 @@ public interface IMaintenanceService {
         return findAll();
     }
 
-    default void deleteMaintenance(Long id) {
-        deleteById(id);
-    }
 }

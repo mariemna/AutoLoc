@@ -5,6 +5,11 @@ import tn.esprit.mariemnajahi.domain.Equipement;
 import java.util.List;
 
 public interface IEquipementService {
+    default Equipement createEquipement(Equipement equipement) { return save(equipement); }
+    default Equipement getEquipementById(Long id) { return findById(id); }
+    default Equipement updateEquipement(Equipement equipement) { return update(equipement); }
+    default void deleteEquipement(Long id) { deleteById(id); }
+    default List<Equipement> getAllEquipements() { return findAll(); }
     default Equipement create(Equipement equipement) { return save(equipement); }
 
     Equipement save(Equipement equipement);
@@ -33,7 +38,4 @@ public interface IEquipementService {
         return findAll();
     }
 
-    default void deleteEquipement(Long id) {
-        deleteById(id);
-    }
 }

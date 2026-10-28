@@ -5,6 +5,11 @@ import tn.esprit.mariemnajahi.domain.Client;
 import java.util.List;
 
 public interface IClientService {
+    default Client createClient(Client client) { return save(client); }
+    default Client getClientById(Long id) { return findById(id); }
+    default Client updateClient(Client client) { return update(client); }
+    default void deleteClient(Long id) { deleteById(id); }
+    default List<Client> getAllClients() { return findAll(); }
     default Client create(Client client) { return save(client); }
 
     Client save(Client client);
@@ -33,7 +38,4 @@ public interface IClientService {
         return findAll();
     }
 
-    default void deleteClient(Long id) {
-        deleteById(id);
-    }
 }

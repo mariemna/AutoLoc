@@ -5,6 +5,11 @@ import tn.esprit.mariemnajahi.domain.Contrat;
 import java.util.List;
 
 public interface IContratService {
+    default Contrat createContrat(Contrat contrat) { return save(contrat); }
+    default Contrat getContratById(Long id) { return findById(id); }
+    default Contrat updateContrat(Contrat contrat) { return update(contrat); }
+    default void deleteContrat(Long id) { deleteById(id); }
+    default List<Contrat> getAllContrats() { return findAll(); }
     default Contrat create(Contrat contrat) { return save(contrat); }
 
     Contrat save(Contrat contrat);
@@ -33,7 +38,4 @@ public interface IContratService {
         return findAll();
     }
 
-    default void deleteContrat(Long id) {
-        deleteById(id);
-    }
 }
