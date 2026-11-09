@@ -30,13 +30,13 @@ L'interface Swagger UI est disponible après le démarrage de l'application à
 l'adresse :
 
 ```text
-http://localhost:8080/swagger-ui.html
+http://localhost:8081/swagger-ui.html
 ```
 
 Le document OpenAPI brut est disponible ici :
 
 ```text
-http://localhost:8080/v3/api-docs
+http://localhost:8081/v3/api-docs
 ```
 
 Chaque contrôleur est décrit par `@Tag` et chacune de ses opérations par
@@ -46,7 +46,7 @@ Chaque contrôleur est décrit par `@Tag` et chacune de ses opérations par
 
 1. Démarrer l'application avec `.\mvnw.cmd spring-boot:run` (ou la
    configuration de base de données habituelle).
-2. Ouvrir `http://localhost:8080/swagger-ui.html`.
+2. Ouvrir `http://localhost:8081/swagger-ui.html`.
 3. Développer les neuf groupes et capturer au minimum une vue montrant la
    documentation des opérations CRUD.
 4. Exécuter un `GET` de collection, un `GET` par identifiant, un `POST`, un
