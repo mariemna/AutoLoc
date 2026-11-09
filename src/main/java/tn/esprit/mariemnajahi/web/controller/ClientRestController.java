@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.esprit.mariemnajahi.domain.Client;
 import tn.esprit.mariemnajahi.service.IClientService;
+import tn.esprit.mariemnajahi.web.dto.ClientResponse;
 
 import java.util.List;
 
@@ -40,15 +41,16 @@ public class ClientRestController {
 
     @PostMapping
     @Operation(summary = "Créer un client")
-    public ResponseEntity<Client> create(@RequestBody Client client) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(clientService.createClient(client));
+    public ResponseEntity<ClientResponse> create(@RequestBody Client client) {
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(toResponse(clientService.createClient(client)));
     }
 
     @PutMapping("/{id}")
     @Operation(summary = "Modifier un client")
-    public ResponseEntity<Client> update(@PathVariable Long id, @RequestBody Client client) {
+    public ResponseEntity<ClientResponse> update(@PathVariable Long id, @RequestBody Client client) {
         client.setIdClient(id);
-        return ResponseEntity.ok(clientService.updateClient(client));
+        return ResponseEntity.ok(toResponse(clientService.updateClient(client)));
     }
 
     @DeleteMapping("/{id}")
@@ -56,5 +58,17 @@ public class ClientRestController {
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
         clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
+    }
+
+    private ClientResponse toResponse(Client client) {
+        return new ClientResponse(
+                client.getIdClient(),
+                client.getNom(),
+                client.getPrenom(),
+                client.getEmail(),
+                client.getTelephone(),
+                client.getNumPermis(),
+                client.getDateInscription()
+        );
     }
 }
