@@ -1,5 +1,6 @@
 package tn.esprit.mariemnajahi.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,6 +35,7 @@ public class Contrat {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_reservation", nullable = false, unique = true)
+    @JsonIgnore
     private Reservation reservation;
 
     @OneToMany(
@@ -42,6 +44,7 @@ public class Contrat {
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )
+    @JsonIgnore
     private List<Paiement> paiements = new ArrayList<>();
 
     public void setReservation(Reservation reservation) {
